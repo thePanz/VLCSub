@@ -11,8 +11,8 @@
 ;General
   
   !define MAIN_NAME "VLCSub"
-  !define VERSION "0.6"
-  !define AUTHOR "Guillaume Le Maout"
+  !define VERSION "0.7"
+  !define AUTHOR "Guillaume Le Maout and thePanz"
   !define REG_UNINSTALL "Software\Microsoft\Windows\CurrentVersion\Uninstall\${MAIN_NAME}"
 
   ;Name and file

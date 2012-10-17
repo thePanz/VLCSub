@@ -731,7 +731,7 @@ function display_subtitles()
 	widget.setVal(list)
 	if openSub.itemStore then 
 		for i, item in ipairs(openSub.itemStore) do
-			widget.setVal(list, item.SubFileName.." ("..item.SubSumCD.." CD)")
+			widget.setVal(list, item.SubFileName.." ["..item.SubLanguageID.."] ("..item.SubSumCD.." CD)")
 		end
 	else
 		widget.setVal(list, "No result")
@@ -745,7 +745,7 @@ function download_subtitles(selection)
 	local item = openSub.itemStore[index]
 	local subfileTarget = ""
 	if openSub.file.dir and openSub.file.name then
-		subfileTarget = openSub.file.dir..openSub.file.name.."."..item.SubFormat
+		subfileTarget = openSub.file.dir..openSub.file.name.."."..item.SubLanguageID.."."..item.SubFormat
 	else
 		subfileTarget = os.tmpname() --FIXME: ask the user where to put it instaed
 	end

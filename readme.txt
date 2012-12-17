@@ -12,8 +12,8 @@ NSIS Installer for Windows created by ThePanz
 Changelog:
 
 2012-12-18 (version 0.8)
-	[Benoit Vallee] Fixed subtitle downloading when special characters are present on the video path
-	[Benoit Vallee] Fixed zip file deletion after subtitle has been extracted
+  [Benoit Vallee] Fixed subtitle downloading when special characters are present on the video path
+  [Benoit Vallee] Fixed zip file deletion after subtitle has been extracted
 
 2012-10-17 (version 0.7)
   [thePanz] Added subtitle language in listing

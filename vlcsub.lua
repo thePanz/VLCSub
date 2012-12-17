@@ -24,7 +24,7 @@
 -- Extension description
 function descriptor()
 	return { title = "VLsub" ;
-		version = "0.6" ;
+		version = "0.8" ;
 		author = "exebetche" ;
 		url = 'http://www.opensubtitles.org/';
 		shortdesc = "VLsub";
@@ -556,7 +556,8 @@ openSub = {
             local tmpFile = assert(io.open(tmpFileName, "wb"))
             tmpFile:write(resp)
             tmpFile:close()
-            subfileURI = "zip://"..make_uri(tmpFileName.."!/"..SubFileName)
+            
+            subfileURI = "zip://"..make_uri(tmpFileName, true).."!/"..SubFileName
             if target then
                 local stream = vlc.stream(subfileURI)
                 local data = ""
@@ -564,15 +565,18 @@ openSub = {
                
                 while data do
                     if openSub.conf.removeTag then
-                        subfile:write(remove_tag(data).."\r\n")
+                        subfile:write(remove_tag(data).."\n")
                     else
-                        subfile:write(data.."\r\n")
+                        subfile:write(data.."\n")
                     end
                     data = stream:readline()
                 end
                 subfile:close()
-                subfileURI = make_uri(target, true)
+
+                stream = nil
             end
+            subfileURI = make_uri(target, true)
+            collectgarbage() -- force gargabe collection in order to close the opened stream
             os.remove(tmpFileName)
         end
        
